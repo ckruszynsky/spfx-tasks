@@ -1,29 +1,26 @@
-import {escape} from '@microsoft/sp-lodash-subset';
+import { FluentCustomizations } from '@uifabric/fluent-theme';
+import { Customizer } from 'office-ui-fabric-react';
 import * as React from 'react';
 
-import styles from './TaskWebPart.module.scss';
+import Header from './Header';
+import TaskForm from './TaskForm';
+import TaskList from './TaskList';
 
-export type TaskWebPartProps = {
-  description: string;
+export interface TaskWebPartProps{
+  title:string;
 };
 
 export default class TaskWebPart extends React.Component < TaskWebPartProps, {} > {
   public render(): React.ReactElement < TaskWebPartProps > {
+    const {title} = this.props;
     return(
-      <div className={styles.taskWebPart}>
-        <div className={styles.container}>
-          <div className={styles.row}>
-            <div className={styles.column}>
-              <span className={styles.title}>Welcome to SharePoint!</span>
-              <p className={styles.subTitle}>Customize SharePoint experiences using Web Parts.</p>
-              <p className={styles.description}>{escape(this.props.description)}</p>
-              <a href="https://aka.ms/spfx" className={styles.button}>
-                <span className={styles.label}>Learn more</span>
-              </a>
-            </div>
-          </div>
+      <Customizer {...FluentCustomizations}>
+        <div className="ms-Grid">
+           <Header title={title}></Header>
+           <TaskForm></TaskForm>
+           <TaskList></TaskList>
         </div>
-      </div>
+      </Customizer>
     );
   }
 }

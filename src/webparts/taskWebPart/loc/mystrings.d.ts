@@ -1,7 +1,7 @@
 declare interface ITaskWebPartWebPartStrings {
-  PropertyPaneDescription: string;
+  PropertyPaneTitle: string;
   BasicGroupName: string;
-  DescriptionFieldLabel: string;
+  TitleFieldLabel: string;
 }
 
 declare module 'TaskWebPartWebPartStrings' {
