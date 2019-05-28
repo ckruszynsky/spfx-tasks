@@ -6,33 +6,17 @@ import * as ReactDom from 'react-dom';
 import * as strings from 'TaskWebPartWebPartStrings';
 
 import TaskWebPart, { TaskWebPartProps } from './components/TaskWebPart';
-import { Task } from './models/Task';
 
 export interface ITaskWebPartWebPartProps {
   title: string;
 }
 
-let tasks:Array<Task> = [
-  {
-    id: 1,
-    title:'Test',
-    description:'This is test task',    
-    complete:false
-  },
-  {
-    id: 2, 
-    title: 'Test # 2',
-    description: 'Another test task',    
-    complete:false
-  }
-]
-
-
 export default class TaskWebPartWebPart extends BaseClientSideWebPart<ITaskWebPartWebPartProps> {
+
+  
   public render(): void {    
     const element: React.ReactElement<TaskWebPartProps> = React.createElement(TaskWebPart,{
-      title: this.properties.title,
-      tasks: tasks
+      title: this.properties.title       
     });
 
     ReactDom.render(element, this.domElement);
